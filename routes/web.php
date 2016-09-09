@@ -11,6 +11,5 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@showLogin');
+Route::post('/', 'IndexController@storeCredentials');
