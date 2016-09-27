@@ -13,3 +13,5 @@
 
 Route::get('/', 'IndexController@showLogin');
 Route::post('/', 'IndexController@storeCredentials');
+
+Route::get('/api_login', 'IndexController@showApiLogin');
