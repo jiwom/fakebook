@@ -179,6 +179,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        // Custom service providers
+        Yajra\Oci8\Oci8ServiceProvider::class,
+
     ],
 
     /*
